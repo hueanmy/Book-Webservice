@@ -1,6 +1,6 @@
-const BookRepository = require('./BookRepository');
-const DBConnection = require('./DBConnection');
-const DataFromMysql = require('./DataFromMysql');
+const BookRepository 	= require('./BookRepository');
+const DBConnection 		= require('./DBConnection');
+const DataFromMysql 	= require('./DataFromMysql');
 
 let dataFromMysql = new DataFromMysql(DBConnection);
 let bookRepository = new BookRepository(dataFromMysql);
