@@ -32,7 +32,19 @@ class BookRepository {
 	};
 
 	updateBook(data){
-		
+
+		let inforBook = new Book(data);
+
+		return this.database.updateBook(inforBook).then(
+			(results) => {
+				return results;
+			},
+
+			(err) => {
+				console.log(err);
+				throw err;
+			}
+		)
 	};
 
 	deleteBook(id){
