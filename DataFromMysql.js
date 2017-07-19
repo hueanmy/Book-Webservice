@@ -9,9 +9,10 @@ class DataFromMysql {
 
 		return new Promise((resolve, reject) => {
 			this.mysqlConnection.query(query, (err, result) => {
-				if (err){
+				if (err) {
 					reject(err);
-				} else {
+				}
+				else {
 					resolve(result);
 				}
 			});
@@ -19,19 +20,64 @@ class DataFromMysql {
 	};
 
 	getBook(id) {
-		
-	};
+        let query = 'select id from book where id = ? ';
+
+        return new Promise((resolve, reject) => {
+            this.mysqlConnection.query(query, (err, result) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        });
+    };
 
 	createBook(data) {
-		
+		let query = 'insert into book set ? ';
+
+        return new Promise((resolve, reject) => {
+        	this.mysqlConnection.query(query, (err, result) => {
+        		if(err) {
+        			reject(err);
+        		}
+        		else {
+        			resolve(result);
+				}
+            });
+        });
 	};
 
 	updateBook(infoBook) {
-		
+	    let query = 'update book name = ? author = ? where id = ?';
+
+	    return new Promise((resolve, reject) => {
+	    	this.mysqlConnection.query(query, (err, result) => {
+	    		if(err) {
+	    			reject(err);
+				}
+				else {
+	    			resolve(result);
+				}
+			});
+		});
 	};
 
 	deleteBook(id) {
-		
+	    let query = 'delete from book where id = ?';
+
+
+        return new Promise((resolve, reject) => {
+            this.mysqlConnection.query(query, (err, result) => {
+                if(err) {
+                    reject(err);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        });
 	};
 
 };
