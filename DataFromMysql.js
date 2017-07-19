@@ -34,8 +34,19 @@ class DataFromMysql {
 	};
 
 	createBook(data) {
-		
-	};
+		let query = 'insert into book set ? '
+
+        return new Promise((resolve, reject) => {
+            this.mysqlConnection.query(query, [data], (err, result) => {
+                if(err) {
+                    reject(err);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        });
+    };
 
 	updateBook(infoBook) {
 		let query = 'update book set author= ?, name= ? where id= ?';
