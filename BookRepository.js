@@ -48,6 +48,17 @@ class BookRepository {
 	};
 
 	deleteBook(id){
+
+		return this.database.deleteBook(id).then(
+			(results) => {
+				return results;
+			},
+
+			(err) => {
+				console.log(err);
+				throw err;
+			}
+		)
 		
 	};
 }

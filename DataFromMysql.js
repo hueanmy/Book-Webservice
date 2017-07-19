@@ -39,7 +39,15 @@ class DataFromMysql {
 	};
 
 	deleteBook(id) {
+		let query = 'delete from book where id = ?';
 
+		return new Promise((resolve, reject) => {
+			this.mysqlConnection.query(query, [id], (err, results) => {
+				if(err)
+					reject(err);
+				resolve(results);
+			});
+		});
 	};
 
 };
